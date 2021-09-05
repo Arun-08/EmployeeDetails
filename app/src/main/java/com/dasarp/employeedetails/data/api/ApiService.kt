@@ -11,6 +11,6 @@ interface ApiService {
     fun getEmployeeList() : Call<List<EmployeeModel>>
 
     @GET("users/empId")
-    fun getCoursesList(@Path("empId")id : Int) : Call<List<EmployeeModel>>
+    fun getEmployee(@Path("empId")id : Int) : Call<EmployeeModel>
 
 }

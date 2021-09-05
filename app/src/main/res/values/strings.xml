@@ -10,4 +10,6 @@
     <string name="company_name">Company Name</string>
     <string name="website">Website</string>
     <string name="colon">:</string>
+    <string name="toast_something_went_wrong">Something went wrong</string>
+    <string name="toast_network_error">Error in network</string>
 </resources>
