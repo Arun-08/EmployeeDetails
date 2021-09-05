@@ -17,6 +17,9 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
             employeeItemBinding.itemLayout.setOnClickListener {
                 onItemListener.onEmployeeDetail(itemModel)
             }
+            employeeItemBinding.empNameEditText.setOnClickListener {
+                onItemListener.onEmployeeDetail(itemModel)
+            }
         }
     }
 
