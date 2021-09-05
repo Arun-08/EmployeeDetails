@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Employee Details</string>
+    <string name="emp_list">Employee List</string>
+    <string name="emp_id">Employee Id</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="company_details_colon">Company Details:</string>
+    <string name="company_name">Company Name</string>
+    <string name="website">Website</string>
+    <string name="colon">:</string>
 </resources>
