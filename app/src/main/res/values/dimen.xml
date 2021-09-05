@@ -6,7 +6,7 @@
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_20">20dp</dimen>
-    <dimen name="text_small">15sp</dimen>
-    <dimen name="text_medium">18sp</dimen>
-    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">19sp</dimen>
 </resources>

@@ -14,7 +14,7 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
     inner class EmployeeViewHolder(val employeeItemBinding: EmployeeItemLayoutBinding) : RecyclerView.ViewHolder(employeeItemBinding.root){
         fun setData(itemModel : EmployeeModel){
             employeeItemBinding.employeeModel = itemModel
-            employeeItemBinding.root.setOnClickListener {
+            employeeItemBinding.itemLayout.setOnClickListener {
                 onItemListener.onEmployeeDetail(itemModel)
             }
         }

@@ -15,6 +15,7 @@ import com.dasarp.employeedetails.ui.view.adapter.EmployeeAdapter
 import com.dasarp.employeedetails.ui.view.widget.MarginItemDecoration
 import com.dasarp.employeedetails.ui.viewmodel.EmployeeViewModel
 import com.dasarp.employeedetails.utils.LoadingStatus
+import com.dasarp.employeedetails.utils.NetworkUtil
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -38,25 +39,29 @@ class MainActivity : AppCompatActivity() {
                     .putExtra("employeeId",employeeModel.id))
             }
         }
-        empViewModel.getEmployeeList().observe(this,{
-            when(it.status){
-                LoadingStatus.LOADING-> {
-                    activityBinding.progressBar.visibility = View.VISIBLE
-                    activityBinding.recyclerview.visibility = View.GONE
-                }
-                LoadingStatus.SUCCESS-> {
-                    if(it.data != null){
-                        empAdapter.employeeList = it.data
-                        empAdapter.notifyDataSetChanged()
+        if(NetworkUtil(this).isNetworkConnected()){
+            empViewModel.getEmployeeList().observe(this,{
+                when(it.status){
+                    LoadingStatus.LOADING-> {
+                        activityBinding.progressBar.visibility = View.VISIBLE
+                        activityBinding.recyclerview.visibility = View.GONE
                     }
-                    activityBinding.progressBar.visibility = View.GONE
-                    activityBinding.recyclerview.visibility = View.VISIBLE
+                    LoadingStatus.SUCCESS-> {
+                        if(it.data != null){
+                            empAdapter.employeeList = it.data
+                            empAdapter.notifyDataSetChanged()
+                        }
+                        activityBinding.progressBar.visibility = View.GONE
+                        activityBinding.recyclerview.visibility = View.VISIBLE
+                    }
+                    LoadingStatus.ERROR-> {
+                        showSnackBarToast(getString(R.string.toast_something_went_wrong))
+                    }
                 }
-                LoadingStatus.ERROR-> {
-                    showSnackBarToast(getString(R.string.toast_something_went_wrong))
-                }
-            }
-        })
+            })
+        }else{
+            showSnackBarToast(getString(R.string.toast_network_error))
+        }
         activityBinding.recyclerview.apply {
             layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.VERTICAL,false)
             addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.margin_10),"VERTICAL"))

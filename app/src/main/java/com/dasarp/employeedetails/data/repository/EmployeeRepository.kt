@@ -50,6 +50,7 @@ class EmployeeRepository : CoroutineScope {
                     response: Response<EmployeeModel>
                 ) {
                     if(response.isSuccessful){
+                        println("employee -->${response.body()}")
                         employeeMutableLiveData.postValue(AppResource.success(response.body()!!))
                     }else{
                         employeeMutableLiveData.postValue(AppResource.error(null))
